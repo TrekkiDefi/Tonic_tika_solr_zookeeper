@@ -11,7 +11,7 @@
     <modules>
         <module>lucene</module>
         <module>solr</module>
-        <module>IKAnalyzer2012ff</module>
+        <module>IKAnalyzer2012ff_4.10.3</module>
     </modules>
 
     <properties>
