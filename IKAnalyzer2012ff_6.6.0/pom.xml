@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>IKAnalyzer2012ff_4.10.3</artifactId>
+    <artifactId>IKAnalyzer2012ff_6.6.0</artifactId>
 
     <properties>
-        <lucene.version>4.10.3</lucene.version>
+        <lucene.version>6.6.0</lucene.version>
     </properties>
 
     <dependencies>
@@ -34,7 +34,7 @@
     </dependencies>
 
     <build>
-        <finalName>IKAnalyzer2012ff_4.10.3</finalName>
+        <finalName>IKAnalyzer2012ff_6.6.0</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
