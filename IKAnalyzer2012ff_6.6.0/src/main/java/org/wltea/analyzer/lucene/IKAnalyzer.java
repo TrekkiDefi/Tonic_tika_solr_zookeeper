@@ -26,8 +26,6 @@ package org.wltea.analyzer.lucene;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.Tokenizer;
 
-import java.io.Reader;
-
 /**
  * IK分析器，Lucene Analyzer接口实现
  * <p>
@@ -38,6 +36,8 @@ import java.io.Reader;
 public final class IKAnalyzer extends Analyzer {
 
     private boolean useSmart;
+    private boolean useSingle;
+    private boolean useItself;
 
     public boolean useSmart() {
         return useSmart;
@@ -47,23 +47,43 @@ public final class IKAnalyzer extends Analyzer {
         this.useSmart = useSmart;
     }
 
+    public boolean useSingle() {
+        return useSingle;
+    }
+
+    public void setUseSingle(boolean useSingle) {
+        this.useSingle = useSingle;
+    }
+
+    public boolean useItself() {
+        return useItself;
+    }
+
+    public void setUseItself(boolean useItself) {
+        this.useItself = useItself;
+    }
+
     /**
      * IK分析器Lucene  Analyzer接口实现类
-     *
+     * <p>
      * 默认细粒度切分算法
      */
     public IKAnalyzer() {
-        this(false);
+        this(false, false, false);
     }
 
     /**
      * IK分析器Lucene Analyzer接口实现类
      *
-     * @param useSmart 当为true时，分词器进行智能切分
+     * @param useSmart  当为true时，分词器进行智能切分
+     * @param useSingle 是否针对英文和数字做单字切分
+     * @param useItself 是否保留英文和数字原语汇单元
      */
-    public IKAnalyzer(boolean useSmart) {
+    public IKAnalyzer(boolean useSmart, boolean useSingle, boolean useItself) {
         super();
         this.useSmart = useSmart;
+        this.useSingle = useSingle;
+        this.useItself = useItself;
     }
 
     /**
@@ -72,7 +92,8 @@ public final class IKAnalyzer extends Analyzer {
     @Override
     protected TokenStreamComponents createComponents(String fieldName) {
         Tokenizer _IKTokenizer = new IKTokenizer(this.useSmart());
-        return new TokenStreamComponents(_IKTokenizer);
+        IKTokenFilter _IKTokenFilter = new IKTokenFilter(_IKTokenizer, useSingle, useItself);
+        return new TokenStreamComponents(_IKTokenizer, _IKTokenFilter);
     }
 
 }

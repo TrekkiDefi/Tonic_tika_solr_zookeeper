@@ -17,9 +17,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.fnpac</groupId>
-            <artifactId>IKAnalyzer2012ff_4.10.3</artifactId>
-            <version>${parent.version}</version>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queryparser</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-common</artifactId>
+            <version>${lucene.version}</version>
         </dependency>
     </dependencies>
 </project>
